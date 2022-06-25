@@ -1,0 +1,18 @@
+SELECT CASE 
+    WHEN MONTH(HireDate) = 1 THEN 'JANUARY'
+    WHEN MONTH(HireDate) = 2 THEN 'FEBRUARY'
+    WHEN MONTH(HireDate) = 3 THEN 'MARCH'
+    WHEN MONTH(HireDate) = 4 THEN 'APRIL'
+    WHEN MONTH(HireDate) = 5 THEN 'MAY'
+    WHEN MONTH(HireDate) = 6 THEN 'JUNE'
+    WHEN MONTH(HireDate) = 7 THEN 'JULY'
+    WHEN MONTH(HireDate) = 8 THEN 'AUGEST'
+    WHEN MONTH(HireDate) = 9 THEN 'SEPTEMBER'
+    WHEN MONTH(HireDate) = 10 THEN 'OCTOBER'
+    WHEN MONTH(HireDate) = 11 THEN 'NOVEMBER'
+    WHEN MONTH(HireDate) = 12 THEN 'DECEMBER'
+END MONTH_NAME,
+COUNT(e.BusinessEntityID) as Employee_id
+FROM HumanResources.Employee as e
+INNER JOIN HumanResources.EmployeeDepartmentHistory as ed ON e.BusinessEntityID = ed.BusinessEntityID
+GROUP BY MONTH(e.HireDate);

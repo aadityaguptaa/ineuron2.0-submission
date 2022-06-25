@@ -1,0 +1,2 @@
+SELECT DISTINCT CONCAT(Per.FirstName, ' ', Per.LastName), C.Name AS COUNTRY_NAME FROM Person.Person Per, 
+Person.CountryRegion C WHERE Per.BusinessEntityID NOT IN (SELECT BusinessEntityID FROM HumanResources.Employee) AND Per.FirstName LIKE 'S%';

@@ -1,0 +1,7 @@
+SELECT YEAR(e.HireDate) as YEAR,
+COUNT(e.BusinessEntityID) as Employee_count,
+(SELECT Name from HumanResources.Department DD WHERE DD.DepartmentID = dep.DepartmentID) AS DEPARTMENT
+FROM HumanResources.Employee as e
+INNER JOIN HumanResources.EmployeeDepartmentHistory as ed ON e.BusinessEntityID = ed.BusinessEntityID
+INNER JOIN HumanResources.Department as dep ON ed.DepartmentID = dep.DepartmentID
+GROUP BY dep.DepartmentID, YEAR(e.HireDate);
